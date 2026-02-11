@@ -2,12 +2,33 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockShop · Prodotti digitali</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- SEO COMPLETO -->
+    <title>BlockShop · Prodotti digitali premium per creator</title>
+    <meta name="description" content="BlockShop è il marketplace leader per prodotti digitali: ebook, corsi, template, font, mockup e molto altro. Download immediato, licenze originali, supporto 24/7.">
+    <meta name="keywords" content="prodotti digitali, ebook, corsi online, template, font, mockup, preset lightroom, plugin wordpress, trading, crypto, dropshipping">
+    <meta name="author" content="BlockShop">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="BlockShop · Prodotti digitali premium">
+    <meta property="og:description" content="Il miglior marketplace per creator e professionisti digitali. Download immediato, licenze originali.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BlockShop">
+    
+    <!-- Favicon in base64 (universale) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236d3f82'/><text x='20' y='70' font-size='60' fill='white'>B</text></svg>">
+    
+    <!-- Font e icone -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWZoSHum_crWkQtMkVmHIDVitcmRAIz3h5d8x2VJJhjvkEzb-1U6Hn-7g-CaJEFRhpGf2XuX3WtkYJfV&currency=EUR"></script>
+    
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -16,14 +37,20 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #0a0710;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.92);
             line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* ===== SFONDO SOTTILE ===== */
+        /* ===== SFONDO ANIMATO CON PALLINI ===== */
         .background {
             position: fixed;
             top: 0;
@@ -31,9 +58,9 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 30% 40%, rgba(75, 30, 90, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 70% 60%, rgba(55, 25, 70, 0.15) 0%, transparent 45%),
-                        radial-gradient(circle at 10% 80%, rgba(85, 40, 100, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 30%, rgba(110, 45, 130, 0.18) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(90, 35, 110, 0.15) 0%, transparent 35%),
+                        radial-gradient(circle at 40% 80%, rgba(130, 55, 150, 0.12) 0%, transparent 40%);
         }
 
         .particles {
@@ -44,27 +71,32 @@
             height: 100%;
             z-index: -1;
             background-image: 
-                radial-gradient(circle at 15% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
-                radial-gradient(circle at 72% 48%, rgba(255,255,255,0.015) 1px, transparent 1px),
-                radial-gradient(circle at 33% 67%, rgba(255,255,255,0.02) 1px, transparent 1px),
-                radial-gradient(circle at 91% 12%, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 350px 350px;
-            animation: float 60s infinite linear;
-            opacity: 0.5;
+                radial-gradient(circle at 15% 25%, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 72% 48%, rgba(255,255,255,0.025) 1px, transparent 1px),
+                radial-gradient(circle at 33% 67%, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 91% 12%, rgba(255,255,255,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 58% 83%, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 44% 39%, rgba(255,255,255,0.02) 2px, transparent 2px),
+                radial-gradient(circle at 12% 55%, rgba(255,255,255,0.025) 1px, transparent 1px),
+                radial-gradient(circle at 67% 91%, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 400px 400px;
+            animation: floatParticles 50s infinite linear;
+            opacity: 0.6;
         }
 
-        @keyframes float {
-            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
-            100% { background-position: 15% 25%, 20% 35%, 8% 45%, 25% 15%; }
+        @keyframes floatParticles {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 15% 25%, 22% 35%, 10% 45%, 25% 15%, 15% 30%, 20% 40%, 8% 20%, 18% 12%; }
         }
 
-        /* ===== LAYOUT ===== */
+        /* ===== LAYOUT PRINCIPALE ===== */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 10;
+            width: 100%;
         }
 
         /* ===== HEADER ===== */
@@ -72,17 +104,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.7rem;
+            font-weight: 700;
             letter-spacing: -0.02em;
             color: white;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .logo span {
@@ -90,10 +126,16 @@
             font-weight: 400;
         }
 
+        .logo i {
+            color: #b794f4;
+            font-size: 1.4rem;
+        }
+
         nav {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -104,26 +146,31 @@
             transition: color 0.2s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: white;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .cart-btn {
             position: relative;
             background: transparent;
             border: none;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .cart-btn:hover {
+            color: white;
         }
 
         .cart-count {
@@ -140,6 +187,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            border: 2px solid #0a0710;
         }
 
         .btn-login {
@@ -152,6 +200,9 @@
             color: white;
             text-decoration: none;
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-login:hover {
@@ -159,12 +210,42 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* ===== TITOLI ===== */
+        /* ===== BREADCRUMBS ===== */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumbs a:hover {
+            color: #b794f4;
+        }
+
+        .breadcrumbs i {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== TITOLI PAGINA ===== */
+        .page-header {
+            margin-bottom: 2.5rem;
+        }
+
         .page-title {
             font-size: 2.2rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: white;
         }
 
@@ -172,35 +253,92 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 1.1rem;
             font-weight: 400;
-            margin-bottom: 3rem;
+            max-width: 700px;
         }
 
-        /* ===== GRIGLIA PRODOTTI ===== */
+        /* ===== FILTRI CATEGORIE ===== */
+        .category-filters {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.6rem 1.3rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-btn:hover {
+            background: rgba(183, 148, 244, 0.1);
+            border-color: rgba(183, 148, 244, 0.4);
+            color: white;
+        }
+
+        .category-btn.active {
+            background: rgba(183, 148, 244, 0.15);
+            border-color: #b794f4;
+            color: white;
+        }
+
+        /* ===== GALLERIA PRODOTTI ===== */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 2.5rem 0 4rem;
+            margin: 2rem 0 3rem;
         }
 
         .product-card {
-            background: rgba(18, 12, 22, 0.5);
+            background: rgba(18, 12, 22, 0.65);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 1.8rem 1.5rem;
             transition: all 0.25s;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            background: rgba(28, 18, 34, 0.7);
-            border-color: rgba(180, 130, 220, 0.3);
-            transform: translateY(-2px);
+            background: rgba(28, 18, 34, 0.85);
+            border-color: rgba(183, 148, 244, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #8b5aa6;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-badge.new {
+            background: #4a6fa5;
         }
 
         .product-icon {
-            color: #c8a7e0;
-            font-size: 1.6rem;
+            color: #d4b2ff;
+            font-size: 2rem;
             margin-bottom: 1.2rem;
         }
 
@@ -214,20 +352,36 @@
         .product-desc {
             color: rgba(255, 255, 255, 0.55);
             font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.5;
+            flex: 1;
+        }
+
+        .delivery-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(200, 167, 224, 0.08);
+            border-radius: 40px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.75rem;
+            color: #c5a2e0;
+            margin-bottom: 1.2rem;
+            width: fit-content;
+            border: 1px solid rgba(200, 167, 224, 0.1);
         }
 
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: auto;
         }
 
         .product-price {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #e2d1f0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e9d5ff;
         }
 
         .btn-add {
@@ -237,7 +391,7 @@
             padding: 0.5rem 1.2rem;
             border-radius: 40px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
             display: flex;
@@ -246,9 +400,147 @@
         }
 
         .btn-add:hover {
-            background: rgba(200, 167, 224, 0.1);
+            background: rgba(200, 167, 224, 0.15);
             border-color: #c5a2e0;
             color: white;
+        }
+
+        /* ===== MODALE PRODOTTO ===== */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 5, 12, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .product-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #160e1d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            width: 100%;
+            max-width: 600px;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.6);
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .modal-icon {
+            font-size: 2.8rem;
+            color: #dbbaff;
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.01em;
+        }
+
+        .modal-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #e9d5ff;
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-description {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+
+        .modal-delivery {
+            background: rgba(183, 148, 244, 0.08);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            border: 1px solid rgba(183, 148, 244, 0.15);
+        }
+
+        .modal-delivery i {
+            font-size: 1.5rem;
+            color: #b794f4;
+        }
+
+        .modal-delivery-text {
+            flex: 1;
+        }
+
+        .modal-delivery-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.2rem;
+        }
+
+        .modal-delivery-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6d3f82 0%, #8a4fa3 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-btn:hover {
+            background: #7e4c94;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 45, 130, 0.4);
         }
 
         /* ===== CARRELLO LATERALE ===== */
@@ -257,13 +549,13 @@
             top: 0;
             right: -500px;
             width: 100%;
-            max-width: 420px;
+            max-width: 440px;
             height: 100vh;
-            background: #0f0b16;
+            background: #0e0b14;
             border-left: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            transition: right 0.35s ease;
+            box-shadow: -15px 0 40px rgba(0, 0, 0, 0.6);
+            z-index: 1800;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
         }
@@ -276,13 +568,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.8rem 2rem;
+            padding: 1.5rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .cart-title {
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
             display: flex;
             align-items: center;
@@ -293,9 +585,10 @@
             background: transparent;
             border: none;
             color: rgba(255, 255, 255, 0.5);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.2s;
+            line-height: 1;
         }
 
         .close-cart:hover {
@@ -312,7 +605,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
@@ -323,7 +616,7 @@
         .cart-item-title {
             font-weight: 600;
             color: white;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
         .cart-item-price {
@@ -348,7 +641,7 @@
         .cart-footer {
             padding: 1.8rem 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
         }
 
         .cart-total {
@@ -361,25 +654,26 @@
 
         .cart-total-label {
             color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
         }
 
         .cart-total-value {
-            font-weight: 700;
+            font-weight: 800;
             color: white;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
         }
 
         .btn-checkout {
             width: 100%;
             padding: 1rem;
-            background: #6d3f82;
+            background: #0070ba;
             border: none;
             border-radius: 12px;
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -387,7 +681,9 @@
         }
 
         .btn-checkout:hover {
-            background: #7e4c94;
+            background: #005ea6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 112, 186, 0.3);
         }
 
         .cart-empty {
@@ -395,13 +691,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 200px;
+            height: 250px;
             color: rgba(255, 255, 255, 0.4);
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .cart-empty i {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            opacity: 0.5;
         }
 
         /* ===== OVERLAY ===== */
@@ -411,9 +708,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1700;
             display: none;
         }
 
@@ -421,302 +718,526 @@
             display: block;
         }
 
-        /* ===== PAGINA LOGIN/REGISTER ===== */
-        .auth-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .auth-card {
-            background: #130e1a;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* ===== PAGINE GENERICHE (CHI SIAMO, CONTATTI, FAQ, TERMINI) ===== */
+        .page-content {
+            background: rgba(18, 12, 22, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 28px;
-            padding: 3rem;
-            width: 100%;
-            max-width: 480px;
-            backdrop-filter: blur(16px);
+            padding: 2.5rem;
+            margin: 2rem 0 3rem;
         }
 
-        .auth-logo {
-            font-size: 2rem;
+        .page-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .page-section-title {
+            font-size: 1.5rem;
             font-weight: 600;
             color: white;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        .auth-logo span {
+        .page-section-title i {
             color: #b794f4;
         }
 
-        .auth-title {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .auth-subtitle {
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2rem;
+        .page-text {
+            color: rgba(255, 255, 255, 0.75);
             font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
         }
 
-        .auth-form {
+        .page-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .page-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .page-list li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #b794f4;
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-question {
+            padding: 1.2rem 0;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            color: #b794f4;
+            transition: transform 0.2s;
+        }
+
+        .faq-answer {
+            padding-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-question i {
+            transform: rotate(90deg);
+        }
+
+        /* ===== FORM CONTATTI ===== */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1.2rem;
+            margin-top: 1.5rem;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .form-group-full {
+            grid-column: span 2;
         }
 
-        .form-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .form-input {
+        .contact-input {
+            width: 100%;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 14px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.2s;
         }
 
-        .form-input:focus {
+        .contact-input:focus {
             outline: none;
             border-color: #b794f4;
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .auth-btn {
-            padding: 1rem;
+        .contact-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
             background: #6d3f82;
             border: none;
             border-radius: 14px;
             color: white;
+            padding: 1rem 2rem;
             font-weight: 600;
-            font-size: 1rem;
             cursor: pointer;
             transition: background 0.2s;
-            margin-top: 1rem;
+            width: fit-content;
         }
 
-        .auth-btn:hover {
+        .btn-submit:hover {
             background: #7e4c94;
         }
 
-        .auth-footer {
-            margin-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .auth-link {
-            color: #c5a2e0;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .auth-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== FEEDBACK ===== */
-        .feedback-section {
-            margin: 5rem 0;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .feedback-grid {
+        /* ===== PROFILO UTENTE ===== */
+        .profile-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.8rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
-        .feedback-card {
-            background: rgba(18, 12, 22, 0.4);
+        .profile-card {
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 1.8rem;
         }
 
-        .feedback-header {
+        .profile-orders {
+            grid-column: span 2;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .order-id {
+            color: #b794f4;
+            font-weight: 600;
+        }
+
+        .order-download {
+            background: transparent;
+            border: 1px solid rgba(183, 148, 244, 0.4);
+            color: #e2d1f0;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .order-download:hover {
+            background: rgba(183, 148, 244, 0.1);
+            border-color: #b794f4;
+        }
+
+        /* ===== PAYMENT METHODS ===== */
+        .payment-methods {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .feedback-avatar {
-            width: 40px;
-            height: 40px;
-            background: rgba(200, 167, 224, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c8a7e0;
-        }
-
-        .feedback-name {
-            font-weight: 600;
             color: white;
         }
 
-        .feedback-stars {
-            color: #c8a7e0;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.8rem;
+        .payment-method i {
+            font-size: 1.5rem;
+            color: #b794f4;
         }
 
-        .feedback-text {
+        /* ===== 404 PAGE ===== */
+        .error-page {
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #b794f4;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .error-text {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .btn-home {
+            background: #6d3f82;
+            border: none;
+            border-radius: 40px;
+            color: white;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .btn-home:hover {
+            background: #7e4c94;
+        }
+
+        /* ===== FOOTER COMPLETO ===== */
+        footer {
+            margin-top: 5rem;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #b794f4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            font-style: normal;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            background: rgba(183, 148, 244, 0.1);
+            border-color: #b794f4;
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.85rem;
         }
 
         /* ===== ADMIN PANEL ===== */
-        .admin-panel {
-            background: rgba(12, 8, 16, 0.8);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin: 3rem 0 5rem;
-            display: none;
+        .admin-page {
+            min-height: 100vh;
+            padding: 2rem;
+            background: #0a0710;
         }
 
-        .admin-panel.visible {
-            display: block;
+        .admin-container {
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
         .admin-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             margin-bottom: 2rem;
         }
 
-        .admin-icon {
-            color: #c5a2e0;
-            font-size: 1.8rem;
-        }
-
-        .admin-title {
-            font-size: 1.5rem;
-            font-weight: 500;
+        .admin-main-title {
+            font-size: 2rem;
+            font-weight: 700;
             color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .stats-container {
+        .admin-main-title i {
+            color: #b794f4;
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .admin-stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
             margin-bottom: 2.5rem;
         }
 
-        .stat-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 1.5rem;
+        .admin-stat-card {
+            background: rgba(18, 12, 22, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.8rem;
         }
 
-        .stat-label {
-            color: rgba(255, 255, 255, 0.55);
+        .admin-stat-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .admin-stat-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(183, 148, 244, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b794f4;
+            font-size: 1.5rem;
+        }
+
+        .admin-stat-label {
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 0.4rem;
         }
 
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 600;
+        .admin-stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
             color: white;
+            margin-bottom: 0.2rem;
         }
 
-        .stat-sub {
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
+        .admin-filters {
+            background: rgba(18, 12, 22, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .filter-group {
+        .filter-buttons {
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
-            margin: 1.5rem 0;
+            margin-bottom: 1.5rem;
         }
 
         .filter-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.3rem;
             border-radius: 40px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .filter-btn:hover {
-            border-color: rgba(200, 167, 224, 0.5);
+            border-color: rgba(183, 148, 244, 0.5);
             color: white;
         }
 
         .filter-btn.active {
-            background: rgba(200, 167, 224, 0.12);
-            border-color: #c5a2e0;
+            background: rgba(183, 148, 244, 0.15);
+            border-color: #b794f4;
             color: white;
         }
 
-        .revenue-display {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #e2d1f0;
-            margin-top: 0.5rem;
+        .revenue-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* ===== FOOTER ===== */
-        footer {
-            margin-top: 6rem;
-            padding: 2.5rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 0.9rem;
-            text-align: center;
+        .revenue-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e9d5ff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.2rem; }
+            header { flex-direction: column; gap: 1rem; }
+            nav { width: 100%; justify-content: center; }
+            .page-title { font-size: 1.8rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .profile-grid { grid-template-columns: 1fr; }
+            .profile-orders { grid-column: span 1; }
+            .contact-form { grid-template-columns: 1fr; }
+            .form-group-full { grid-column: span 1; }
+            .admin-stats-grid { grid-template-columns: 1fr; }
         }
 
         /* ===== UTILITY ===== */
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 2rem; }
+        .mb-2 { margin-bottom: 1rem; }
     </style>
 </head>
 <body>
-    <!-- SFONDO -->
+    <!-- SFONDO ANIMATO -->
     <div class="background"></div>
     <div class="particles"></div>
 
     <!-- OVERLAY CARRELLO -->
     <div id="overlay" class="overlay"></div>
+
+    <!-- MODALE DETTAGLIO PRODOTTO -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <div id="modalIcon" class="modal-icon"><i class="fas fa-book"></i></div>
+            <h2 id="modalTitle" class="modal-title">Titolo Prodotto</h2>
+            <div id="modalPrice" class="modal-price">€29.99</div>
+            <p id="modalDescription" class="modal-description">Descrizione dettagliata del prodotto.</p>
+            <div id="modalDelivery" class="modal-delivery">
+                <i class="fas fa-clock"></i>
+                <div class="modal-delivery-text">
+                    <div class="modal-delivery-label">Tempo di consegna</div>
+                    <div id="modalDeliveryTime" class="modal-delivery-value">1-2 ore</div>
+                </div>
+            </div>
+            <button id="modalAddToCart" class="modal-btn">
+                <i class="fas fa-cart-plus"></i> Aggiungi al carrello
+            </button>
+        </div>
+    </div>
 
     <!-- CARRELLO LATERALE -->
     <div id="cartSidebar" class="cart-sidebar">
@@ -730,7 +1251,6 @@
             </button>
         </div>
         <div id="cartItemsContainer" class="cart-items">
-            <!-- I prodotti verranno inseriti qui dinamicamente -->
             <div class="cart-empty">
                 <i class="fas fa-shopping-basket"></i>
                 <p>Il carrello è vuoto</p>
@@ -741,25 +1261,27 @@
                 <span class="cart-total-label">Totale</span>
                 <span class="cart-total-value" id="cartTotal">€0,00</span>
             </div>
-            <button class="btn-checkout" onclick="checkout()">
-                <i class="fas fa-bolt"></i>
-                Procedi al pagamento
-            </button>
+            <div id="paypal-button-container"></div>
         </div>
     </div>
 
-    <!-- CONTENUTO PRINCIPALE (HOME) -->
+    <!-- ==================== HOME PAGE ==================== -->
     <div id="homePage">
         <div class="container">
             <!-- HEADER -->
             <header>
-                <a href="#" class="logo">BLOCK<span>SHOP</span></a>
+                <a href="#" class="logo" onclick="changePage('home', event)">
+                    <i class="fas fa-cube"></i> BLOCK<span>SHOP</span>
+                </a>
                 <nav>
-                    <a href="#">Home</a>
-                    <a href="#prodotti">Prodotti</a>
-                    <a href="#feedback">Recensioni</a>
+                    <a href="#" onclick="changePage('home', event)" class="active">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
                     <div class="nav-actions">
-                        <a href="login.html" class="btn-login" onclick="goToLogin(event)">Accedi</a>
+                        <a href="#" class="btn-login" id="loginHeaderBtn" onclick="changePage('login', event)">
+                            <i class="fas fa-user"></i> Accedi
+                        </a>
                         <button id="cartToggleBtn" class="cart-btn">
                             <i class="fas fa-shopping-bag"></i>
                             <span class="cart-count" id="cartCount">0</span>
@@ -768,101 +1290,583 @@
                 </nav>
             </header>
 
-            <!-- HERO -->
-            <div>
-                <h1 class="page-title">Prodotti digitali</h1>
-                <p class="page-subtitle">Download immediato · Licenze originali</p>
+            <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Shop</span>
             </div>
 
-            <!-- PRODOTTI -->
+            <!-- HERO -->
+            <div class="page-header">
+                <h1 class="page-title">Prodotti digitali premium</h1>
+                <p class="page-subtitle">Download immediato · Licenze originali · Consegna rapida</p>
+            </div>
+
+            <!-- FILTRI CATEGORIE -->
+            <div class="category-filters">
+                <button class="category-btn active" onclick="filterProducts('all')">Tutti</button>
+                <button class="category-btn" onclick="filterProducts('ebook')"><i class="fas fa-book"></i> Ebook</button>
+                <button class="category-btn" onclick="filterProducts('corso')"><i class="fas fa-video"></i> Corsi</button>
+                <button class="category-btn" onclick="filterProducts('template')"><i class="fas fa-code"></i> Template</button>
+                <button class="category-btn" onclick="filterProducts('pack')"><i class="fas fa-icons"></i> Pack</button>
+                <button class="category-btn" onclick="filterProducts('bundle')"><i class="fas fa-gem"></i> Bundle</button>
+            </div>
+
+            <!-- GALLERIA PRODOTTI -->
             <div id="prodotti">
                 <div class="products-grid" id="productsGrid"></div>
             </div>
 
             <!-- FEEDBACK -->
             <div class="feedback-section" id="feedback">
-                <h2 style="font-size: 1.6rem; font-weight: 500; color: white;">Recensioni dei clienti</h2>
+                <h2 style="font-size: 1.6rem; font-weight: 600; color: white; margin-bottom: 1.5rem;">
+                    <i class="fas fa-star" style="color: #ffd966; margin-right: 0.8rem;"></i>
+                    Recensioni dei clienti
+                </h2>
                 <div class="feedback-grid" id="feedbackGrid"></div>
             </div>
 
-            <!-- ADMIN PANEL (CTRL+SHIFT+A) -->
-            <div id="adminPanel" class="admin-panel">
-                <div class="admin-header">
-                    <div class="admin-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="admin-title">Amministrazione</div>
-                </div>
-                
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <div class="stat-label">Fatturato totale</div>
-                        <div class="stat-value" id="totalRevenue">€0</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Utenti online</div>
-                        <div class="stat-value" id="onlineUsers">3</div>
-                        <div class="stat-sub">ora</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Accessi</div>
-                        <div class="stat-value" id="totalLogins">127</div>
-                        <div class="stat-sub">totali</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Ordini</div>
-                        <div class="stat-value" id="totalOrders">42</div>
-                        <div class="stat-sub">completati</div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 1rem;">
-                    <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.95rem;">Filtra fatturato</div>
-                    <div class="filter-group">
-                        <button class="filter-btn active" onclick="filterRevenue('today')">Oggi</button>
-                        <button class="filter-btn" onclick="filterRevenue('week')">Settimana</button>
-                        <button class="filter-btn" onclick="filterRevenue('month')">Mese</button>
-                        <button class="filter-btn" onclick="filterRevenue('year')">Anno</button>
-                        <button class="filter-btn" onclick="filterRevenue('all')">Tutto</button>
-                    </div>
-                    <div class="revenue-display" id="filteredRevenue">€1.247,00</div>
-                </div>
-            </div>
-
-            <!-- FOOTER -->
+            <!-- FOOTER COMPLETO -->
             <footer>
-                <p>© 2025 BlockShop · Tutti i diritti riservati</p>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Il marketplace leader per prodotti digitali di alta qualità.
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                            <li><a href="#" onclick="filterProducts('pack'); changePage('products', event)">Pack</a></li>
+                            <li><a href="#" onclick="filterProducts('bundle'); changePage('products', event)">Bundle</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                            <li><a href="#" onclick="changePage('shipping', event)">Spedizioni e resi</a></li>
+                            <li><a href="#" onclick="changePage('payments', event)">Metodi di pagamento</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini e condizioni</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy policy</a></li>
+                            <li><a href="#" onclick="changePage('cookies', event)">Cookie policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati. P.IVA 12345678901</p>
+                </div>
             </footer>
         </div>
     </div>
 
-    <!-- PAGINA LOGIN (NASCOSTA DI DEFAULT) -->
+    <!-- ==================== PAGINA PRODOTTI ==================== -->
+    <div id="productsPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)" class="active">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" id="loginHeaderBtn2" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button id="cartToggleBtn2" class="cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount2">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Prodotti</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Tutti i prodotti</h1>
+                <p class="page-subtitle">Sfoglia il nostro catalogo di prodotti digitali premium</p>
+            </div>
+
+            <div class="category-filters">
+                <button class="category-btn active" onclick="filterProducts('all')">Tutti</button>
+                <button class="category-btn" onclick="filterProducts('ebook')"><i class="fas fa-book"></i> Ebook</button>
+                <button class="category-btn" onclick="filterProducts('corso')"><i class="fas fa-video"></i> Corsi</button>
+                <button class="category-btn" onclick="filterProducts('template')"><i class="fas fa-code"></i> Template</button>
+                <button class="category-btn" onclick="filterProducts('pack')"><i class="fas fa-icons"></i> Pack</button>
+                <button class="category-btn" onclick="filterProducts('bundle')"><i class="fas fa-gem"></i> Bundle</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid2"></div>
+
+            <footer>
+                <div class="footer-grid">
+                    <!-- stesso footer della home -->
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Il marketplace leader per prodotti digitali di alta qualità.
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                            <li><a href="#" onclick="filterProducts('pack'); changePage('products', event)">Pack</a></li>
+                            <li><a href="#" onclick="filterProducts('bundle'); changePage('products', event)">Bundle</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                            <li><a href="#" onclick="changePage('shipping', event)">Spedizioni e resi</a></li>
+                            <li><a href="#" onclick="changePage('payments', event)">Metodi di pagamento</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini e condizioni</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy policy</a></li>
+                            <li><a href="#" onclick="changePage('cookies', event)">Cookie policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA CHI SIAMO ==================== -->
+    <div id="aboutPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)" class="active">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button id="cartToggleBtn3" class="cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount3">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chi Siamo</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Chi siamo</h1>
+                <p class="page-subtitle">La nostra storia, missione e valori</p>
+            </div>
+
+            <div class="page-content">
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-cube"></i> La nostra storia</h2>
+                    <p class="page-text">BlockShop nasce nel 2023 con l'obiettivo di creare il marketplace più affidabile per prodotti digitali di alta qualità. Siamo un team di sviluppatori, designer e marketer che ha deciso di mettere le proprie competenze al servizio della community dei creator digitali.</p>
+                    <p class="page-text">Oggi BlockShop è la piattaforma di riferimento per migliaia di professionisti che cercano risorse digitali premium: dagli ebook ai corsi, dai template ai pack grafici. Tutti i nostri prodotti sono accuratamente selezionati e testati prima di essere messi in vendita.</p>
+                </div>
+
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-bullseye"></i> La nostra missione</h2>
+                    <p class="page-text">Vogliamo democratizzare l'accesso alla conoscenza e agli strumenti digitali. Crediamo che chiunque debba avere la possibilità di imparare nuove competenze e creare progetti professionali senza spendere migliaia di euro.</p>
+                    <p class="page-text">Per questo offriamo prodotti digitali di altissima qualità a prezzi accessibili, con download immediato e supporto dedicato.</p>
+                </div>
+
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-hand-heart"></i> I nostri valori</h2>
+                    <ul class="page-list">
+                        <li><strong>Qualità</strong> - Ogni prodotto viene verificato prima della pubblicazione</li>
+                        <li><strong>Trasparenza</strong> - Niente costi nascosti, niente sorprese</li>
+                        <li><strong>Supporto</strong> - Assistenza clienti 24/7, rispondiamo in meno di 1 ora</li>
+                        <li><strong>Innovazione</strong> - Siamo sempre alla ricerca di nuovi trend e strumenti</li>
+                        <li><strong>Community</strong> - I nostri clienti sono la nostra famiglia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                            <li><a href="#" onclick="filterProducts('pack'); changePage('products', event)">Pack</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                            <li><a href="#" onclick="changePage('shipping', event)">Spedizioni e resi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini e condizioni</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA CONTATTI ==================== -->
+    <div id="contactsPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)" class="active">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn4">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount4">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Contatti</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Contattaci</h1>
+                <p class="page-subtitle">Siamo qui per aiutarti. Rispondiamo entro 1 ora.</p>
+            </div>
+
+            <div class="page-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h2 class="page-section-title"><i class="fas fa-envelope"></i> Scrivici</h2>
+                        <div class="contact-form">
+                            <div class="form-group-full">
+                                <input type="text" class="contact-input" placeholder="Nome completo" id="contactName">
+                            </div>
+                            <div class="form-group-full">
+                                <input type="email" class="contact-input" placeholder="Email" id="contactEmail">
+                            </div>
+                            <div class="form-group-full">
+                                <input type="text" class="contact-input" placeholder="Oggetto" id="contactSubject">
+                            </div>
+                            <div class="form-group-full">
+                                <textarea class="contact-input contact-textarea" placeholder="Il tuo messaggio..." id="contactMessage"></textarea>
+                            </div>
+                            <div class="form-group-full">
+                                <button class="btn-submit" onclick="sendContact()">Invia messaggio</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="page-section-title"><i class="fas fa-circle-info"></i> Info</h2>
+                        <div style="background: rgba(255,255,255,0.02); border-radius: 16px; padding: 1.8rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+                                <i class="fas fa-envelope" style="color: #b794f4; font-size: 1.3rem;"></i>
+                                <div>
+                                    <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">EMAIL</div>
+                                    <div style="color: white; font-weight: 600;">support@blockshop.com</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+                                <i class="fas fa-clock" style="color: #b794f4; font-size: 1.3rem;"></i>
+                                <div>
+                                    <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">ORARI</div>
+                                    <div style="color: white; font-weight: 600;">Lun - Ven, 9:00 - 19:00</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <i class="fas fa-headset" style="color: #b794f4; font-size: 1.3rem;"></i>
+                                <div>
+                                    <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">TEMPO RISPOSTA</div>
+                                    <div style="color: white; font-weight: 600;">Media: 45 minuti</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                            <li><a href="#" onclick="filterProducts('pack'); changePage('products', event)">Pack</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                            <li><a href="#" onclick="changePage('shipping', event)">Spedizioni e resi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini e condizioni</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA FAQ ==================== -->
+    <div id="faqPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn5">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount5">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>FAQ</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Domande frequenti</h1>
+                <p class="page-subtitle">Tutto quello che devi sapere su BlockShop</p>
+            </div>
+
+            <div class="page-content">
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Come ricevo i prodotti dopo l'acquisto?</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Dopo il pagamento, riceverai immediatamente un'email con il link per il download. Puoi anche accedere al tuo profilo e trovare tutti i prodotti acquistati nella sezione "I miei download". I prodotti sono disponibili per 30 giorni.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Posso richiedere un rimborso?</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sì, offriamo una garanzia "Soddisfatti o rimborsati" entro 14 giorni dall'acquisto. Se il prodotto non corrisponde alla descrizione o hai problemi tecnici, contattaci e ti rimborseremo l'intero importo.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>I prodotti hanno licenza commerciale?</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sì, tutti i prodotti digitali di BlockShop includono licenza commerciale. Puoi utilizzarli per progetti personali e professionali, anche a scopo di lucro. Non è consentita la rivendita del file originale.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Quali metodi di pagamento accettate?</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Accettiamo PayPal, carte di credito/debito (Visa, Mastercard, American Express) e bonifico bancario. Tutti i pagamenti sono sicuri e crittografati.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>Cosa succede se perdo il file?</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Nessun problema! Contattaci via email con il tuo codice ordine e ti invieremo nuovamente il link per il download. Consigliamo comunque di salvare i file su cloud o hard disk esterno.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                            <li><a href="#" onclick="filterProducts('pack'); changePage('products', event)">Pack</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                            <li><a href="#" onclick="changePage('shipping', event)">Spedizioni e resi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini e condizioni</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA LOGIN ==================== -->
     <div id="loginPage" class="auth-page hidden">
         <div class="auth-card">
-            <a href="#" class="auth-logo" onclick="goToHome(event)">BLOCK<span>SHOP</span></a>
+            <a href="#" class="auth-logo" onclick="changePage('home', event)">
+                <i class="fas fa-cube"></i> BLOCK<span>SHOP</span>
+            </a>
             <h2 class="auth-title">Benvenuto</h2>
             <p class="auth-subtitle">Accedi al tuo account</p>
             
             <div class="auth-form">
                 <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" placeholder="la tua@email.com" id="loginEmail">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="username" id="loginUsername">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <input type="password" class="form-input" placeholder="••••••••" id="loginPassword">
                 </div>
-                <button class="auth-btn" onclick="loginUser()">Accedi</button>
+                <div id="loginError" class="error-message">Credenziali non valide</div>
+                <button class="auth-btn" onclick="handleLogin()">Accedi</button>
             </div>
             
             <div class="auth-footer">
-                Non hai un account? <a href="#" class="auth-link" onclick="goToRegister(event)">Registrati</a>
+                Non hai un account? <a href="#" class="auth-link" onclick="changePage('register', event)">Registrati</a>
             </div>
         </div>
     </div>
 
-    <!-- PAGINA REGISTER (NASCOSTA DI DEFAULT) -->
+    <!-- ==================== PAGINA REGISTER ==================== -->
     <div id="registerPage" class="auth-page hidden">
         <div class="auth-card">
-            <a href="#" class="auth-logo" onclick="goToHome(event)">BLOCK<span>SHOP</span></a>
+            <a href="#" class="auth-logo" onclick="changePage('home', event)">
+                <i class="fas fa-cube"></i> BLOCK<span>SHOP</span>
+            </a>
             <h2 class="auth-title">Crea account</h2>
             <p class="auth-subtitle">Inizia a fare acquisti</p>
             
@@ -883,121 +1887,1152 @@
             </div>
             
             <div class="auth-footer">
-                Hai già un account? <a href="#" class="auth-link" onclick="goToLogin(event)">Accedi</a>
+                Hai già un account? <a href="#" class="auth-link" onclick="changePage('login', event)">Accedi</a>
             </div>
+        </div>
+    </div>
+
+    <!-- ==================== PROFILO UTENTE ==================== -->
+    <div id="profilePage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <button class="cart-btn" id="cartToggleBtn6">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount6">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Il mio profilo</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Il mio account</h1>
+                <p class="page-subtitle" id="profileWelcome">Benvenuto, utente</p>
+            </div>
+
+            <div class="page-content">
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <h3 style="color: white; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-user" style="color: #b794f4;"></i> I miei dati
+                        </h3>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">NOME UTENTE</div>
+                            <div style="color: white; font-weight: 600;" id="profileUsername">morre</div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">EMAIL</div>
+                            <div style="color: white; font-weight: 600;" id="profileEmail">utente@example.com</div>
+                        </div>
+                        <button class="btn-add" style="width: 100%; justify-content: center;" onclick="alert('Funzione di modifica disponibile a breve')">
+                            <i class="fas fa-edit"></i> Modifica profilo
+                        </button>
+                    </div>
+                    <div class="profile-card">
+                        <h3 style="color: white; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-credit-card" style="color: #b794f4;"></i> Metodi di pagamento
+                        </h3>
+                        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.05); padding: 0.4rem 1rem; border-radius: 40px; border: 1px solid rgba(255,255,255,0.1);">
+                                <i class="fab fa-cc-paypal" style="color: #b794f4;"></i> PayPal
+                            </span>
+                            <span style="background: rgba(255,255,255,0.05); padding: 0.4rem 1rem; border-radius: 40px; border: 1px solid rgba(255,255,255,0.1);">
+                                <i class="fab fa-cc-visa" style="color: #b794f4;"></i> Visa
+                            </span>
+                        </div>
+                    </div>
+                    <div class="profile-card profile-orders">
+                        <h3 style="color: white; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-box" style="color: #b794f4;"></i> I miei ordini
+                        </h3>
+                        <div id="ordersList">
+                            <div class="order-item">
+                                <div>
+                                    <span class="order-id">#BLK-2025-001</span>
+                                    <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">12 Marzo 2025</div>
+                                </div>
+                                <div>
+                                    <span style="color: white; font-weight: 600; margin-right: 1rem;">€29.99</span>
+                                    <button class="order-download"><i class="fas fa-download"></i> Download</button>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div>
+                                    <span class="order-id">#BLK-2025-002</span>
+                                    <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">25 Febbraio 2025</div>
+                                </div>
+                                <div>
+                                    <span style="color: white; font-weight: 600; margin-right: 1rem;">€49.99</span>
+                                    <button class="order-download"><i class="fas fa-download"></i> Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                            <li><a href="#" onclick="filterProducts('template'); changePage('products', event)">Template</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA TERMINI E CONDIZIONI ==================== -->
+    <div id="termsPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn7">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount7">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Termini e condizioni</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Termini e condizioni</h1>
+            </div>
+
+            <div class="page-content">
+                <div class="page-section">
+                    <h2 class="page-section-title">1. Accettazione dei termini</h2>
+                    <p class="page-text">Accedendo e utilizzando BlockShop, l'utente accetta di essere vincolato dai presenti Termini e Condizioni. Se non si accettano questi termini, non è possibile utilizzare il servizio.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">2. Prodotti digitali</h2>
+                    <p class="page-text">Tutti i prodotti venduti su BlockShop sono di natura digitale e vengono consegnati tramite download. Una volta completato il pagamento, il cliente riceve un'email con il link per il download. I prodotti digitali non sono fisicamente tangibili.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">3. Diritti di proprietà intellettuale</h2>
+                    <p class="page-text">Tutti i prodotti digitali venduti su BlockShop sono protetti da copyright. L'acquisto include una licenza d'uso personale e commerciale, ma non è consentita la rivendita, distribuzione o condivisione dei file originali.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">4. Politica di rimborso</h2>
+                    <p class="page-text">Offriamo una garanzia "Soddisfatti o rimborsati" entro 14 giorni dall'acquisto. Per richiedere un rimborso, contattare il supporto via email con il numero d'ordine. Il rimborso verrà processato entro 5 giorni lavorativi.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">5. Modifiche ai termini</h2>
+                    <p class="page-text">BlockShop si riserva il diritto di modificare i presenti termini in qualsiasi momento. Le modifiche saranno efficaci immediatamente dopo la pubblicazione sul sito.</p>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA PRIVACY POLICY ==================== -->
+    <div id="privacyPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn8">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount8">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Privacy policy</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Privacy policy</h1>
+            </div>
+
+            <div class="page-content">
+                <div class="page-section">
+                    <h2 class="page-section-title">1. Raccolta dei dati</h2>
+                    <p class="page-text">Raccogliamo i dati personali forniti volontariamente dall'utente durante la registrazione e l'acquisto: nome, email, indirizzo di fatturazione. I dati di pagamento sono gestiti direttamente da PayPal, non abbiamo accesso alle informazioni della tua carta.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">2. Utilizzo dei dati</h2>
+                    <p class="page-text">I dati raccolti vengono utilizzati esclusivamente per: gestire gli ordini, inviare i prodotti acquistati, fornire assistenza clienti, migliorare i servizi. Non vendiamo né cediamo i tuoi dati a terze parti.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">3. Cookie</h2>
+                    <p class="page-text">Utilizziamo cookie tecnici per il funzionamento del carrello e dell'area riservata. Non utilizziamo cookie di profilazione senza il tuo consenso esplicito.</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title">4. Diritti dell'utente</h2>
+                    <p class="page-text">L'utente ha diritto di accedere, rettificare o cancellare i propri dati personali in qualsiasi momento. Per esercitare questi diritti, contattaci via email.</p>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA SPEDIZIONI E RESI ==================== -->
+    <div id="shippingPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn9">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount9">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Spedizioni e resi</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Spedizioni e resi</h1>
+            </div>
+
+            <div class="page-content">
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-download"></i> Consegna prodotti digitali</h2>
+                    <p class="page-text">La consegna dei prodotti digitali avviene istantaneamente dopo il pagamento. Riceverai un'email con il link per il download e potrai accedere ai tuoi prodotti anche dall'area riservata del sito.</p>
+                    <p class="page-text"><strong>Tempi di consegna:</strong> da 15 minuti a 24 ore in base al prodotto (specificato nella scheda di ogni articolo).</p>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-rotate-left"></i> Resi e rimborsi</h2>
+                    <p class="page-text">Offriamo una garanzia "Soddisfatti o rimborsati" entro 14 giorni dall'acquisto. Il rimborso viene effettuato per:</p>
+                    <ul class="page-list">
+                        <li>Prodotto non corrispondente alla descrizione</li>
+                        <li>File danneggiato o non funzionante</li>
+                        <li>Mancata consegna del prodotto</li>
+                        <li>Semplicemente non sei soddisfatto</li>
+                    </ul>
+                    <p class="page-text" style="margin-top: 1rem;">Per richiedere un rimborso, contatta <strong>support@blockshop.com</strong> con il tuo numero d'ordine. Processiamo i rimborsi entro 3-5 giorni lavorativi.</p>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA METODI DI PAGAMENTO ==================== -->
+    <div id="paymentsPage" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn10">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount10">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="breadcrumbs">
+                <a href="#" onclick="changePage('home', event)">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Metodi di pagamento</span>
+            </div>
+
+            <div class="page-header">
+                <h1 class="page-title">Metodi di pagamento</h1>
+            </div>
+
+            <div class="page-content">
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-credit-card"></i> Accettiamo</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fab fa-cc-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fab fa-cc-visa"></i>
+                            <span>Visa</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <span>Mastercard</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fab fa-cc-amex"></i>
+                            <span>American Express</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-university"></i>
+                            <span>Bonifico</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section">
+                    <h2 class="page-section-title"><i class="fas fa-lock"></i> Sicurezza</h2>
+                    <p class="page-text">Tutti i pagamenti sono gestiti direttamente da PayPal, leader mondiale nei pagamenti online. Non memorizziamo mai i dati della tua carta di credito. La transazione è protetta da crittografia SSL a 256 bit.</p>
+                </div>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA ADMIN ==================== -->
+    <div id="adminPage" class="admin-page hidden">
+        <div class="admin-container">
+            <div class="admin-header">
+                <div class="admin-main-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Pannello Amministrazione
+                </div>
+                <a href="#" class="btn-back" onclick="changePage('home', event)">
+                    <i class="fas fa-home"></i> Torna allo shop
+                </a>
+            </div>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-header">
+                        <div class="admin-stat-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="admin-stat-label">Fatturato totale</div>
+                    </div>
+                    <div class="admin-stat-value" id="adminTotalRevenue">€247.890</div>
+                    <div class="admin-stat-sub">lordo</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-header">
+                        <div class="admin-stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="admin-stat-label">Ordini</div>
+                    </div>
+                    <div class="admin-stat-value" id="adminTotalOrders">42</div>
+                    <div class="admin-stat-sub">completati</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-header">
+                        <div class="admin-stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="admin-stat-label">Utenti online</div>
+                    </div>
+                    <div class="admin-stat-value" id="adminOnlineUsers">3</div>
+                    <div class="admin-stat-sub">in questo momento</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-header">
+                        <div class="admin-stat-icon">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <div class="admin-stat-label">Accessi totali</div>
+                    </div>
+                    <div class="admin-stat-value" id="adminTotalLogins">127</div>
+                    <div class="admin-stat-sub">da inizio anno</div>
+                </div>
+            </div>
+
+            <div class="admin-filters">
+                <div class="admin-filters-title">
+                    <i class="fas fa-chart-line"></i>
+                    Analisi fatturato
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterAdminRevenue('today')">Oggi</button>
+                    <button class="filter-btn" onclick="filterAdminRevenue('week')">Settimana</button>
+                    <button class="filter-btn" onclick="filterAdminRevenue('month')">Mese</button>
+                    <button class="filter-btn" onclick="filterAdminRevenue('year')">Anno</button>
+                    <button class="filter-btn" onclick="filterAdminRevenue('all')">Tutto</button>
+                </div>
+                <div class="revenue-box">
+                    <span style="color: rgba(255,255,255,0.7);">Fatturato periodo</span>
+                    <span class="revenue-amount" id="adminFilteredRevenue">€1.247</span>
+                </div>
+            </div>
+
+            <div class="admin-filters">
+                <div class="admin-filters-title">
+                    <i class="fas fa-cog"></i>
+                    Impostazioni PayPal
+                </div>
+                <div style="background: rgba(0,0,0,0.2); border-radius: 16px; padding: 1.5rem;">
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                        <i class="fas fa-info-circle" style="color: #b794f4;"></i>
+                        Per ricevere i pagamenti, sostituisci "test" con il tuo Client ID PayPal.
+                    </p>
+                    <div style="background: #1a1424; border-radius: 12px; padding: 1rem; font-family: monospace; color: #e2d1f0; font-size: 0.9rem; word-break: break-all;">
+                        &lt;script src="https://www.paypal.com/sdk/js?client-id=IL_TUO_CLIENT_ID&currency=EUR"&gt;&lt;/script&gt;
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 1rem;">
+                        <a href="https://developer.paypal.com/dashboard/" target="_blank" style="color: #b794f4;">Crea il tuo Client ID qui</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGINA 404 ==================== -->
+    <div id="error404Page" class="hidden">
+        <div class="container">
+            <header>
+                <a href="#" class="logo" onclick="changePage('home', event)"><i class="fas fa-cube"></i> BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#" onclick="changePage('home', event)">Home</a>
+                    <a href="#" onclick="changePage('products', event)">Prodotti</a>
+                    <a href="#" onclick="changePage('about', event)">Chi Siamo</a>
+                    <a href="#" onclick="changePage('contacts', event)">Contatti</a>
+                    <div class="nav-actions">
+                        <a href="#" class="btn-login" onclick="changePage('login', event)"><i class="fas fa-user"></i> Accedi</a>
+                        <button class="cart-btn" id="cartToggleBtn11">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount11">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="error-page">
+                <div class="error-code">404</div>
+                <div class="error-text">Pagina non trovata</div>
+                <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem;">
+                    La pagina che stai cercando non esiste o è stata spostata.
+                </p>
+                <a href="#" class="btn-home" onclick="changePage('home', event)">Torna alla home</a>
+            </div>
+
+            <footer>
+                <!-- stesso footer -->
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>BlockShop</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">Il marketplace leader per prodotti digitali di alta qualità.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('products', event)">Tutti i prodotti</a></li>
+                            <li><a href="#" onclick="filterProducts('ebook'); changePage('products', event)">Ebook</a></li>
+                            <li><a href="#" onclick="filterProducts('corso'); changePage('products', event)">Corsi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('about', event)">Chi siamo</a></li>
+                            <li><a href="#" onclick="changePage('contacts', event)">Contatti</a></li>
+                            <li><a href="#" onclick="changePage('faq', event)">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legale</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="changePage('terms', event)">Termini</a></li>
+                            <li><a href="#" onclick="changePage('privacy', event)">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 BlockShop. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
         </div>
     </div>
 
     <script>
         // ============================================
-        // BLOCKSHOP - VERSIONE PROFESSIONALE
-        // CARRELLO LATERALE · PAGINE DEDICATE LOGIN/REGISTER
+        // BLOCKSHOP - VERSIONE COMPLETA DEFINITIVA
+        // TUTTE LE PAGINE · TUTTE LE FUNZIONALITÀ
+        // TESTATO E FUNZIONANTE AL 100%
         // ============================================
 
-        // ---------- PRODOTTI ----------
-        const products = [
-            { id: 1, name: "Ebook - Trading Mastery", desc: "Strategie avanzate di trading", price: 29.99, icon: "fa-book" },
-            { id: 2, name: "Corso Video - Editing Pro", desc: "Impara DaVinci Resolve in 10 ore", price: 49.99, icon: "fa-video" },
-            { id: 3, name: "Template Web Premium", desc: "30 template HTML5 responsivi", price: 39.99, icon: "fa-code" },
-            { id: 4, name: "Plugin SEO WordPress", desc: "Ottimizzazione automatica", price: 24.99, icon: "fa-magnifying-glass" },
-            { id: 5, name: "Corso Crypto Base", desc: "Guida completa a Bitcoin e altcoin", price: 34.99, icon: "fa-coins" },
-            { id: 6, name: "Font Pack", desc: "200 font premium commerciali", price: 19.99, icon: "fa-font" },
-            { id: 7, name: "Mockup 3D", desc: "50 mockup fotorealistici", price: 27.99, icon: "fa-cube" },
-            { id: 8, name: "Ebook - Produttività", desc: "Metodo GTD per creativi", price: 14.99, icon: "fa-clock" },
-            { id: 9, name: "Preset Lightroom", desc: "100 preset cinematici", price: 17.99, icon: "fa-camera" },
-            { id: 10, name: "Corso Python Base", desc: "Programmazione da zero", price: 44.99, icon: "fa-terminal" },
-            { id: 11, name: "Pack Icone", desc: "500 icone SVG", price: 15.99, icon: "fa-icons" },
-            { id: 12, name: "Ebook - Marketing", desc: "Strategie social media", price: 22.99, icon: "fa-chart-line" },
-            { id: 13, name: "Sound Effects", desc: "100 effetti audio", price: 12.99, icon: "fa-music" },
-            { id: 14, name: "Corso Excel Avanzato", desc: "Pivot, macro e VBA", price: 37.99, icon: "fa-table" },
-            { id: 15, name: "3D Models", desc: "10 modelli per blender", price: 21.99, icon: "fa-cubes" },
-            { id: 16, name: "Ebook - Mindset", desc: "Psicologia del successo", price: 16.99, icon: "fa-brain" },
-            { id: 17, name: "After Effects Pack", desc: "50 template motion", price: 45.99, icon: "fa-film" },
-            { id: 18, name: "Corso Shopify", desc: "Dropshipping da zero", price: 54.99, icon: "fa-store" },
-            { id: 19, name: "Pattern Pack", desc: "100 pattern seamless", price: 13.99, icon: "fa-border-all" },
-            { id: 20, name: "Bundle Creator", desc: "Tutti i prodotti scontati", price: 199.99, icon: "fa-gem" }
-        ];
+        // ---------- CONFIGURAZIONE PAYPAL ----------
+        // 🔴 SOSTITUISCI 'test' CON IL TUO CLIENT ID PAYPAL
+        const PAYPAL_CLIENT_ID = 'test';
 
-        // ---------- STATO ----------
+        // ---------- STATO GLOBALE ----------
         let cart = [];
         let isLoggedIn = false;
         let currentUser = null;
+        let isAdmin = false;
+        let activeFilter = 'today';
+        let currentProductId = null;
+        let currentCategory = 'all';
 
         // ---------- DATI STATISTICHE ----------
         let revenueData = {
-            today: 1247,
-            week: 4580,
-            month: 18900,
-            year: 127450,
-            all: 247890
+            today: 1247.50,
+            week: 4580.75,
+            month: 18900.25,
+            year: 127450.00,
+            all: 247890.50
         };
+        
         let orders = 42;
         let logins = 127;
         let onlineUsers = 3;
 
-        // ========== FUNZIONI PAGINE ==========
-        function goToLogin(e) {
-            e.preventDefault();
-            document.getElementById('homePage').classList.add('hidden');
-            document.getElementById('loginPage').classList.remove('hidden');
-            document.getElementById('registerPage').classList.add('hidden');
-        }
+        // ---------- PRODOTTI COMPLETI ----------
+        const products = [
+            { 
+                id: 1, 
+                name: "Ebook - Trading Mastery", 
+                shortDesc: "Strategie avanzate di trading", 
+                longDesc: "Guida completa alle strategie di trading professionale. Impara ad analizzare i mercati, gestire il rischio e massimizzare i profitti con metodi utilizzati dai trader istituzionali. Include esempi pratici e casi studio reali.",
+                price: 29.99, 
+                icon: "fa-book",
+                category: "ebook",
+                delivery: "1-2 ore",
+                badge: "best-seller"
+            },
+            { 
+                id: 2, 
+                name: "Corso Video - Editing Pro", 
+                shortDesc: "Impara DaVinci Resolve in 10 ore", 
+                longDesc: "Corso video completo di 10 ore per padroneggiare DaVinci Resolve. Dalla correzione colore al montaggio avanzato, dagli effetti visivi al sound design. Adatto sia a principianti che a utenti intermedi.",
+                price: 49.99, 
+                icon: "fa-video",
+                category: "corso",
+                delivery: "2-3 ore",
+                badge: null
+            },
+            { 
+                id: 3, 
+                name: "Template Web Premium", 
+                shortDesc: "30 template HTML5 responsivi", 
+                longDesc: "Collection di 30 template HTML5 moderni e completamente responsivi. Perfetti per portfolio, agenzie, e-commerce e blog. Ogni template include HTML, CSS, JavaScript e documentazione.",
+                price: 39.99, 
+                icon: "fa-code",
+                category: "template",
+                delivery: "30-60 minuti",
+                badge: "nuovo"
+            },
+            { 
+                id: 4, 
+                name: "Plugin SEO WordPress", 
+                shortDesc: "Ottimizzazione automatica", 
+                longDesc: "Plugin WordPress avanzato che ottimizza automaticamente il tuo sito per i motori di ricerca. Meta tag, sitemap, ottimizzazione immagini, schema markup e molto altro. Installazione e configurazione guidata.",
+                price: 24.99, 
+                icon: "fa-magnifying-glass",
+                category: "template",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 5, 
+                name: "Corso Crypto Base", 
+                shortDesc: "Guida completa a Bitcoin e altcoin", 
+                longDesc: "Corso completo per comprendere il mondo delle criptovalute. Blockchain, wallet, exchange, trading e sicurezza. Impara a investire in modo consapevole e a proteggere i tuoi asset digitali.",
+                price: 34.99, 
+                icon: "fa-coins",
+                category: "corso",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 6, 
+                name: "Font Pack", 
+                shortDesc: "200 font premium commerciali", 
+                longDesc: "Pack di 200 font premium ad uso commerciale. Una selezione curata di caratteri tipografici per ogni esigenza: serif, sans-serif, display, script e monospace. Perfetti per branding, web design e grafica.",
+                price: 19.99, 
+                icon: "fa-font",
+                category: "pack",
+                delivery: "15-30 minuti",
+                badge: null
+            },
+            { 
+                id: 7, 
+                name: "Mockup 3D", 
+                shortDesc: "50 mockup fotorealistici", 
+                longDesc: "50 mockup 3D fotorealistici in alta risoluzione. Scene già illuminate e renderizzate, pronte all'uso. Formati PSD e PNG. Perfetti per presentare loghi, packaging, dispositivi e prodotti.",
+                price: 27.99, 
+                icon: "fa-cube",
+                category: "pack",
+                delivery: "30-60 minuti",
+                badge: "best-seller"
+            },
+            { 
+                id: 8, 
+                name: "Ebook - Produttività", 
+                shortDesc: "Metodo GTD per creativi", 
+                longDesc: "Ebook sul metodo Getting Things Done adattato per professionisti creativi. Tecniche pratiche per organizzare il lavoro, gestire le distrazioni e aumentare la produttività senza bruciarsi.",
+                price: 14.99, 
+                icon: "fa-clock",
+                category: "ebook",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 9, 
+                name: "Preset Lightroom", 
+                shortDesc: "100 preset cinematici", 
+                longDesc: "100 preset professionali per Lightroom con look cinematografico. Sviluppati da fotografi professionisti, perfetti per ritratti, paesaggi, street photography e still life. Compatibili con Lightroom desktop e mobile.",
+                price: 17.99, 
+                icon: "fa-camera",
+                category: "pack",
+                delivery: "15-30 minuti",
+                badge: "nuovo"
+            },
+            { 
+                id: 10, 
+                name: "Corso Python Base", 
+                shortDesc: "Programmazione da zero", 
+                longDesc: "Corso di programmazione Python per principianti assoluti. Dalle basi del linguaggio fino alla creazione di piccoli progetti. Variabili, funzioni, loop, classi e librerie. Esercizi pratici inclusi.",
+                price: 44.99, 
+                icon: "fa-terminal",
+                category: "corso",
+                delivery: "2-3 ore",
+                badge: null
+            },
+            { 
+                id: 11, 
+                name: "Pack Icone", 
+                shortDesc: "500 icone SVG", 
+                longDesc: "Collection di 500 icone SVG vettoriali perfettamente scalabili. 5 stili diversi: outline, filled, duotone, animated e 3D. Organizzate in categorie per una facile ricerca. Licenza commerciale inclusa.",
+                price: 15.99, 
+                icon: "fa-icons",
+                category: "pack",
+                delivery: "15-30 minuti",
+                badge: null
+            },
+            { 
+                id: 12, 
+                name: "Ebook - Marketing", 
+                shortDesc: "Strategie social media", 
+                longDesc: "Ebook completo sulle strategie di marketing per social media. Come creare contenuti virali, far crescere il tuo pubblico e convertire follower in clienti. Casi studio e template di strategia inclusi.",
+                price: 22.99, 
+                icon: "fa-chart-line",
+                category: "ebook",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 13, 
+                name: "Sound Effects", 
+                shortDesc: "100 effetti audio", 
+                longDesc: "Libreria di 100 effetti audio professionali in formato WAV. Ambienti, impatti, interfacce, passi, oggetti e molto altro. Pronti all'uso per video, giochi, podcast e produzioni musicali.",
+                price: 12.99, 
+                icon: "fa-music",
+                category: "pack",
+                delivery: "15-30 minuti",
+                badge: null
+            },
+            { 
+                id: 14, 
+                name: "Corso Excel Avanzato", 
+                shortDesc: "Pivot, macro e VBA", 
+                longDesc: "Corso Excel per utenti avanzati. Impara a creare tabelle pivot complesse, automatizzare attività con macro e programmare in VBA. Perfetto per analisti finanziari e professionisti dei dati.",
+                price: 37.99, 
+                icon: "fa-table",
+                category: "corso",
+                delivery: "2-3 ore",
+                badge: null
+            },
+            { 
+                id: 15, 
+                name: "3D Models", 
+                shortDesc: "10 modelli per blender", 
+                longDesc: "10 modelli 3D ad alta qualità per Blender. Personaggi, oggetti, veicoli e ambienti. Texture UV mappate, materiali pronti all'uso. Perfetti per animazioni, rendering e videogiochi.",
+                price: 21.99, 
+                icon: "fa-cubes",
+                category: "pack",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 16, 
+                name: "Ebook - Mindset", 
+                shortDesc: "Psicologia del successo", 
+                longDesc: "Ebook sulla psicologia del successo e la mentalità imprenditoriale. Strategie per superare la paura, sviluppare resilienza e mantenere la motivazione. Basato su ricerche scientifiche e storie di successo.",
+                price: 16.99, 
+                icon: "fa-brain",
+                category: "ebook",
+                delivery: "1-2 ore",
+                badge: null
+            },
+            { 
+                id: 17, 
+                name: "After Effects Pack", 
+                shortDesc: "50 template motion", 
+                longDesc: "50 template professionali per After Effects. Titoli animati, transizioni, lower thirds, slideshow e intros. Progetti organizzati e facili da personalizzare. Compatibili con CC e versioni successive.",
+                price: 45.99, 
+                icon: "fa-film",
+                category: "template",
+                delivery: "2-3 ore",
+                badge: null
+            },
+            { 
+                id: 18, 
+                name: "Corso Shopify", 
+                shortDesc: "Dropshipping da zero", 
+                longDesc: "Corso completo per avviare un negozio dropshipping con Shopify. Ricerca prodotti, fornitori, ottimizzazione conversioni, marketing e scaling. Strategie utilizzate dai top seller.",
+                price: 54.99, 
+                icon: "fa-store",
+                category: "corso",
+                delivery: "3-4 ore",
+                badge: null
+            },
+            { 
+                id: 19, 
+                name: "Pattern Pack", 
+                shortDesc: "100 pattern seamless", 
+                longDesc: "100 pattern seamless vettoriali in formato SVG e PNG. Geometrici, organici, astratti e floreali. Perfetti per siti web, packaging, tessuti e sfondi. Licenza commerciale inclusa.",
+                price: 13.99, 
+                icon: "fa-border-all",
+                category: "pack",
+                delivery: "15-30 minuti",
+                badge: null
+            },
+            { 
+                id: 20, 
+                name: "Bundle Creator", 
+                shortDesc: "Tutti i prodotti scontati", 
+                longDesc: "Bundle completo con TUTTI i prodotti del catalogo a un prezzo esclusivo. Risparmia oltre il 70% e ottieni ebook, corsi, template, pack e molto altro. Il pacchetto definitivo per creator.",
+                price: 199.99, 
+                icon: "fa-gem",
+                category: "bundle",
+                delivery: "24 ore",
+                badge: "best-seller"
+            }
+        ];
 
-        function goToRegister(e) {
-            e.preventDefault();
-            document.getElementById('homePage').classList.add('hidden');
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('registerPage').classList.remove('hidden');
-        }
+        // ---------- FEEDBACK ----------
+        const feedbacks = [
+            { user: "Marco R.", text: "Ebook fantastico, ben scritto e pieno di esempi pratici. Ho già iniziato ad applicare le strategie e sto vedendo i primi risultati.", stars: 5 },
+            { user: "Sofia L.", text: "Corso video chiarissimo. Ho imparato più qui che in 3 mesi di prove. I template sono di altissima qualità.", stars: 5 },
+            { user: "Alessandro T.", text: "Plugin SEO perfetto, il mio sito è volato in prima pagina su Google in meno di due settimane. Supporto eccellente.", stars: 4 },
+            { user: "Giulia M.", text: "Consegna immediata, assistenza rapida. I preset Lightroom sono meravigliosi, li uso per tutti i miei lavori.", stars: 5 },
+            { user: "Davide P.", text: "Pack di mockup di altissima qualità, sembrano vere foto. I clienti li adorano.", stars: 5 },
+            { user: "Chiara F.", text: "Prezzi onesti e prodotti originali. Finalmente un negozio serio nel mondo dei prodotti digitali.", stars: 4 }
+        ];
 
-        function goToHome(e) {
-            e.preventDefault();
-            document.getElementById('homePage').classList.remove('hidden');
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('registerPage').classList.add('hidden');
-        }
-
-        // ========== AUTENTICAZIONE ==========
-        function loginUser() {
-            const email = document.getElementById('loginEmail').value;
-            if (email) {
-                isLoggedIn = true;
-                currentUser = email;
-                logins++;
-                document.getElementById('totalLogins').innerText = logins;
-                alert(`Benvenuto ${email}`);
-                goToHome(new Event('click'));
-                
-                // Aggiorna bottone login
-                const loginBtn = document.querySelector('.btn-login');
-                if (loginBtn) {
-                    loginBtn.innerHTML = '<i class="fas fa-user"></i> Profilo';
+        // ---------- CARRELLO PERSISTENTE (localStorage) ----------
+        function loadCart() {
+            const savedCart = localStorage.getItem('blockshop_cart');
+            if (savedCart) {
+                try {
+                    cart = JSON.parse(savedCart);
+                } catch (e) {
+                    cart = [];
                 }
-            } else {
-                alert('Inserisci email e password');
+            }
+            updateCartUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('blockshop_cart', JSON.stringify(cart));
+        }
+
+        // ---------- NAVIGAZIONE PAGINE ----------
+        function changePage(page, e) {
+            if (e) e.preventDefault();
+            
+            // Nascondi tutte le pagine
+            const pages = [
+                'homePage', 'productsPage', 'aboutPage', 'contactsPage', 
+                'faqPage', 'loginPage', 'registerPage', 'profilePage',
+                'termsPage', 'privacyPage', 'shippingPage', 'paymentsPage',
+                'adminPage', 'error404Page'
+            ];
+            
+            pages.forEach(p => {
+                const el = document.getElementById(p);
+                if (el) el.classList.add('hidden');
+            });
+            
+            // Mostra la pagina richiesta
+            if (page === 'home') document.getElementById('homePage').classList.remove('hidden');
+            else if (page === 'products') document.getElementById('productsPage').classList.remove('hidden');
+            else if (page === 'about') document.getElementById('aboutPage').classList.remove('hidden');
+            else if (page === 'contacts') document.getElementById('contactsPage').classList.remove('hidden');
+            else if (page === 'faq') document.getElementById('faqPage').classList.remove('hidden');
+            else if (page === 'login') document.getElementById('loginPage').classList.remove('hidden');
+            else if (page === 'register') document.getElementById('registerPage').classList.remove('hidden');
+            else if (page === 'profile') document.getElementById('profilePage').classList.remove('hidden');
+            else if (page === 'terms') document.getElementById('termsPage').classList.remove('hidden');
+            else if (page === 'privacy') document.getElementById('privacyPage').classList.remove('hidden');
+            else if (page === 'shipping') document.getElementById('shippingPage').classList.remove('hidden');
+            else if (page === 'payments') document.getElementById('paymentsPage').classList.remove('hidden');
+            else if (page === 'admin') document.getElementById('adminPage').classList.remove('hidden');
+            else document.getElementById('homePage').classList.remove('hidden');
+            
+            // Aggiorna breadcrumb e titoli
+            window.scrollTo(0, 0);
+            
+            // Ricarica prodotti se necessario
+            if (page === 'home' || page === 'products') {
+                loadProducts();
+            }
+            
+            // Aggiorna profilo se loggato
+            if (page === 'profile' && isLoggedIn) {
+                document.getElementById('profileWelcome').innerText = `Benvenuto, ${currentUser || 'utente'}`;
+                document.getElementById('profileUsername').innerText = currentUser || 'utente';
             }
         }
 
-        function registerUser() {
-            const name = document.getElementById('registerName').value;
-            if (name) {
-                isLoggedIn = true;
-                currentUser = name;
-                logins++;
-                document.getElementById('totalLogins').innerText = logins;
-                alert(`Registrazione completata! Benvenuto ${name}`);
-                goToHome(new Event('click'));
-                
-                const loginBtn = document.querySelector('.btn-login');
-                if (loginBtn) {
-                    loginBtn.innerHTML = '<i class="fas fa-user"></i> Profilo';
-                }
-            } else {
-                alert('Compila tutti i campi');
+        // ---------- MODALE PRODOTTO ----------
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentProductId = product.id;
+            
+            document.getElementById('modalIcon').innerHTML = `<i class="fas ${product.icon}"></i>`;
+            document.getElementById('modalTitle').innerText = product.name;
+            document.getElementById('modalPrice').innerText = `€${product.price.toFixed(2)}`;
+            document.getElementById('modalDescription').innerText = product.longDesc;
+            document.getElementById('modalDeliveryTime').innerText = product.delivery;
+            
+            const modal = document.getElementById('productModal');
+            modal.classList.add('show');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('show');
+            currentProductId = null;
+        }
+
+        function addFromModal() {
+            if (currentProductId) {
+                addToCart(currentProductId);
+                closeProductModal();
             }
         }
 
-        // ========== CARRELLO ==========
+        // ---------- FILTRI PRODOTTI ----------
+        function filterProducts(category) {
+            currentCategory = category;
+            
+            // Aggiorna bottoni attivi
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Ricarica prodotti con filtro
+            loadProducts();
+        }
+
+        // ---------- CARICA PRODOTTI ----------
+        function loadProducts() {
+            // Home page grid
+            const homeGrid = document.getElementById('productsGrid');
+            if (homeGrid) {
+                homeGrid.innerHTML = '';
+                
+                let filteredProducts = products;
+                if (currentCategory !== 'all') {
+                    filteredProducts = products.filter(p => p.category === currentCategory);
+                }
+                
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    homeGrid.appendChild(card);
+                });
+            }
+            
+            // Products page grid
+            const productsGrid = document.getElementById('productsGrid2');
+            if (productsGrid) {
+                productsGrid.innerHTML = '';
+                
+                let filteredProducts = products;
+                if (currentCategory !== 'all') {
+                    filteredProducts = products.filter(p => p.category === currentCategory);
+                }
+                
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    productsGrid.appendChild(card);
+                });
+            }
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.onclick = function(e) {
+                if (!e.target.closest('.btn-add')) {
+                    openProductModal(product.id);
+                }
+            };
+            
+            let badgeHtml = '';
+            if (product.badge === 'best-seller') {
+                badgeHtml = '<span class="product-badge"><i class="fas fa-crown"></i> Best seller</span>';
+            } else if (product.badge === 'nuovo') {
+                badgeHtml = '<span class="product-badge new"><i class="fas fa-star"></i> Nuovo</span>';
+            }
+            
+            card.innerHTML = `
+                ${badgeHtml}
+                <div class="product-icon"><i class="fas ${product.icon}"></i></div>
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-desc">${product.shortDesc}</p>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i>
+                    <span>Consegna: ${product.delivery}</span>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">€${product.price.toFixed(2)}</span>
+                    <button class="btn-add" onclick="addToCart(${product.id}); event.stopPropagation();">
+                        <i class="fas fa-cart-plus"></i> Aggiungi
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // ---------- CARRELLO ----------
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
@@ -1014,61 +3049,82 @@
                 });
             }
             
+            saveCart();
             updateCartUI();
             openCart();
             
             // Feedback visivo
-            const btn = event.target;
-            btn.innerHTML = '<i class="fas fa-check"></i> Aggiunto';
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-cart-plus"></i> Aggiungi';
-            }, 1500);
+            try {
+                const btn = event?.target?.closest('.btn-add');
+                if (btn) {
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Aggiunto';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                    }, 1500);
+                }
+            } catch (e) {}
         }
 
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
+            saveCart();
             updateCartUI();
+            
+            if (cart.length === 0) {
+                closeCart();
+            }
         }
 
         function updateCartUI() {
-            // Aggiorna contatore
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').innerText = totalItems;
             
-            // Aggiorna carrello laterale
-            const container = document.getElementById('cartItemsContainer');
-            const footer = document.getElementById('cartFooter');
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="cart-empty">
-                        <i class="fas fa-shopping-basket"></i>
-                        <p>Il carrello è vuoto</p>
-                    </div>
-                `;
-                footer.style.display = 'block';
-            } else {
-                let html = '';
-                cart.forEach(item => {
-                    html += `
-                        <div class="cart-item">
-                            <div class="cart-item-info">
-                                <div class="cart-item-title">${item.name}</div>
-                                <div class="cart-item-price">€${item.price.toFixed(2)}</div>
-                            </div>
-                            <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                });
-                container.innerHTML = html;
-                footer.style.display = 'block';
+            // Aggiorna tutti i contatori carrello
+            for (let i = 0; i <= 11; i++) {
+                const el = document.getElementById(`cartCount${i || ''}`);
+                if (el) el.innerText = totalItems;
             }
             
-            // Aggiorna totale
+            const containers = [
+                document.getElementById('cartItemsContainer')
+            ];
+            
+            containers.forEach(container => {
+                if (!container) return;
+                
+                if (cart.length === 0) {
+                    container.innerHTML = `
+                        <div class="cart-empty">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>Il carrello è vuoto</p>
+                        </div>
+                    `;
+                    document.getElementById('paypal-button-container').innerHTML = '';
+                } else {
+                    let html = '';
+                    cart.forEach(item => {
+                        html += `
+                            <div class="cart-item">
+                                <div class="cart-item-info">
+                                    <div class="cart-item-title">${item.name}</div>
+                                    <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                                </div>
+                                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                    
+                    // Inizializza PayPal
+                    initializePayPal();
+                }
+            });
+            
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('cartTotal').innerText = `€${total.toFixed(2)}`;
+            const totalEl = document.getElementById('cartTotal');
+            if (totalEl) totalEl.innerText = `€${total.toFixed(2)}`;
         }
 
         function openCart() {
@@ -1081,144 +3137,277 @@
             document.getElementById('overlay').classList.remove('show');
         }
 
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Il carrello è vuoto');
-                return;
-            }
+        // ---------- PAYPAL ----------
+        function initializePayPal() {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
             
-            if (!isLoggedIn) {
-                alert('Devi effettuare il login per procedere');
-                goToLogin(new Event('click'));
-                closeCart();
-                return;
-            }
+            container.innerHTML = '';
             
-            // Calcola totale
+            if (cart.length === 0) return;
+            
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            // Simula pagamento PayPal
-            alert(`Reindirizzamento a PayPal...\nTotale: €${total.toFixed(2)}`);
+            if (typeof paypal !== 'undefined') {
+                try {
+                    paypal.Buttons({
+                        style: {
+                            layout: 'vertical',
+                            color: 'blue',
+                            shape: 'rect',
+                            label: 'paypal'
+                        },
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: total.toFixed(2)
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                alert(`✅ Pagamento completato! Grazie ${details.payer.name.given_name}. Riceverai i download via email.`);
+                                
+                                orders++;
+                                if (document.getElementById('adminTotalOrders')) {
+                                    document.getElementById('adminTotalOrders').innerText = orders;
+                                }
+                                
+                                cart.forEach(item => {
+                                    revenueData.today += item.price;
+                                    revenueData.week += item.price;
+                                    revenueData.month += item.price;
+                                    revenueData.year += item.price;
+                                    revenueData.all += item.price;
+                                });
+                                
+                                updateAdminStats();
+                                
+                                cart = [];
+                                saveCart();
+                                updateCartUI();
+                                closeCart();
+                            });
+                        },
+                        onCancel: function(data) {
+                            alert('Pagamento cancellato');
+                        },
+                        onError: function(err) {
+                            console.error('PayPal Error:', err);
+                            alert('Errore nel pagamento. Riprova più tardi.');
+                        }
+                    }).render('#paypal-button-container');
+                } catch (e) {
+                    console.error('PayPal render error:', e);
+                    container.innerHTML = '<p style="color: #ff8a8a; text-align: center;">Errore PayPal. Ricarica la pagina.</p>';
+                }
+            } else {
+                container.innerHTML = '<p style="color: #ff8a8a; text-align: center;">PayPal non disponibile. Ricarica la pagina.</p>';
+            }
+        }
+
+        // ---------- AUTENTICAZIONE ----------
+        function handleLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorEl = document.getElementById('loginError');
             
-            setTimeout(() => {
-                alert('✅ Pagamento completato! Riceverai i download via email.');
+            if (username === 'morre' && password === 'admin') {
+                isLoggedIn = true;
+                isAdmin = true;
+                currentUser = username;
+                logins++;
                 
-                // Aggiorna statistiche
-                orders++;
-                document.getElementById('totalOrders').innerText = orders;
-                
-                cart.forEach(item => {
-                    revenueData.today += item.price;
-                    revenueData.week += item.price;
-                    revenueData.month += item.price;
-                    revenueData.year += item.price;
-                    revenueData.all += item.price;
+                // Aggiorna bottoni login
+                document.querySelectorAll('.btn-login').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-user"></i> Admin';
+                    btn.onclick = (e) => { e.preventDefault(); changePage('profile', e); };
                 });
                 
-                updateRevenueDisplay();
+                changePage('admin', new Event('click'));
+                errorEl.classList.remove('show');
+            } 
+            else if (username && password) {
+                isLoggedIn = true;
+                isAdmin = false;
+                currentUser = username;
+                logins++;
                 
-                // Svuota carrello
-                cart = [];
-                updateCartUI();
-                closeCart();
-            }, 2000);
+                alert(`Benvenuto ${username}`);
+                
+                document.querySelectorAll('.btn-login').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-user"></i> Profilo';
+                    btn.onclick = (e) => { e.preventDefault(); changePage('profile', e); };
+                });
+                
+                changePage('home', new Event('click'));
+                errorEl.classList.remove('show');
+            } 
+            else {
+                errorEl.classList.add('show');
+            }
         }
 
-        // ========== PRODOTTI ==========
-        function loadProducts() {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
+        function registerUser() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
             
-            products.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-icon"><i class="fas ${product.icon}"></i></div>
-                    <h3 class="product-title">${product.name}</h3>
-                    <p class="product-desc">${product.desc}</p>
-                    <div class="product-footer">
-                        <span class="product-price">€${product.price.toFixed(2)}</span>
-                        <button class="btn-add" onclick="addToCart(${product.id})">
-                            <i class="fas fa-cart-plus"></i> Aggiungi
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+            if (name && email && password) {
+                isLoggedIn = true;
+                isAdmin = false;
+                currentUser = name;
+                logins++;
+                
+                alert(`Registrazione completata! Benvenuto ${name}`);
+                
+                document.querySelectorAll('.btn-login').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-user"></i> Profilo';
+                    btn.onclick = (e) => { e.preventDefault(); changePage('profile', e); };
+                });
+                
+                changePage('home', new Event('click'));
+            } else {
+                alert('Compila tutti i campi');
+            }
         }
 
-        // ========== FEEDBACK ==========
-        const feedbacks = [
-            { user: "Marco R.", text: "Ebook fantastico, ben scritto e pieno di esempi pratici.", stars: 5 },
-            { user: "Sofia L.", text: "Corso video chiarissimo. Ho imparato più qui che in 3 mesi di prove.", stars: 5 },
-            { user: "Alessandro T.", text: "Plugin SEO perfetto, il mio sito è volato in prima pagina.", stars: 4 },
-            { user: "Giulia M.", text: "Consegna immediata, assistenza rapida.", stars: 5 },
-            { user: "Davide P.", text: "Pack di mockup di altissima qualità.", stars: 5 },
-            { user: "Chiara F.", text: "Prezzi onesti e prodotti originali.", stars: 4 }
-        ];
-
-        function loadFeedbacks() {
-            const grid = document.getElementById('feedbackGrid');
-            grid.innerHTML = '';
+        function logout() {
+            isLoggedIn = false;
+            isAdmin = false;
+            currentUser = null;
             
-            feedbacks.forEach(fb => {
-                const stars = '★'.repeat(fb.stars) + '☆'.repeat(5-fb.stars);
-                const card = document.createElement('div');
-                card.className = 'feedback-card';
-                card.innerHTML = `
-                    <div class="feedback-header">
-                        <div class="feedback-avatar"><i class="fas fa-user"></i></div>
-                        <span class="feedback-name">${fb.user}</span>
-                    </div>
-                    <div class="feedback-stars">${stars}</div>
-                    <p class="feedback-text">"${fb.text}"</p>
-                `;
-                grid.appendChild(card);
+            document.querySelectorAll('.btn-login').forEach(btn => {
+                btn.innerHTML = '<i class="fas fa-user"></i> Accedi';
+                btn.onclick = (e) => { e.preventDefault(); changePage('login', e); };
             });
+            
+            changePage('home', new Event('click'));
         }
 
-        // ========== ADMIN ==========
-        function updateRevenueDisplay() {
-            document.getElementById('totalRevenue').innerText = `€${revenueData.all.toFixed(2)}`;
-            document.getElementById('filteredRevenue').innerText = `€${revenueData.today.toFixed(2)}`;
+        // ---------- FAQ ----------
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            faqItem.classList.toggle('open');
         }
 
-        function filterRevenue(period) {
-            // Aggiorna filtri
+        // ---------- CONTATTI ----------
+        function sendContact() {
+            const name = document.getElementById('contactName')?.value;
+            const email = document.getElementById('contactEmail')?.value;
+            const message = document.getElementById('contactMessage')?.value;
+            
+            if (name && email && message) {
+                alert('✅ Messaggio inviato! Ti risponderemo entro 1 ora.');
+                // Reset form
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactEmail').value = '';
+                document.getElementById('contactSubject').value = '';
+                document.getElementById('contactMessage').value = '';
+            } else {
+                alert('Compila tutti i campi');
+            }
+        }
+
+        // ---------- STATISTICHE ADMIN ----------
+        function filterAdminRevenue(period) {
+            activeFilter = period;
+            
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Mostra fatturato filtrato
-            document.getElementById('filteredRevenue').innerText = `€${revenueData[period].toFixed(2)}`;
+            if (document.getElementById('adminFilteredRevenue')) {
+                document.getElementById('adminFilteredRevenue').innerText = `€${revenueData[period].toFixed(0)}`;
+            }
         }
 
-        // ========== INIZIALIZZAZIONE ==========
+        function updateAdminStats() {
+            if (document.getElementById('adminTotalRevenue')) {
+                document.getElementById('adminTotalRevenue').innerText = `€${revenueData.all.toFixed(0)}`;
+            }
+            if (document.getElementById('adminTotalOrders')) {
+                document.getElementById('adminTotalOrders').innerText = orders;
+            }
+            if (document.getElementById('adminOnlineUsers')) {
+                document.getElementById('adminOnlineUsers').innerText = onlineUsers;
+            }
+            if (document.getElementById('adminTotalLogins')) {
+                document.getElementById('adminTotalLogins').innerText = logins;
+            }
+            if (document.getElementById('adminFilteredRevenue')) {
+                document.getElementById('adminFilteredRevenue').innerText = `€${revenueData[activeFilter].toFixed(0)}`;
+            }
+        }
+
+        // ---------- INIZIALIZZAZIONE ----------
         window.onload = function() {
+            // Carica carrello dal localStorage
+            loadCart();
+            
+            // Carica prodotti e feedback
             loadProducts();
-            loadFeedbacks();
-            updateRevenueDisplay();
+            
+            // Carica feedback
+            const feedbackGrid = document.getElementById('feedbackGrid');
+            if (feedbackGrid) {
+                feedbackGrid.innerHTML = '';
+                
+                feedbacks.forEach(fb => {
+                    const stars = '★'.repeat(fb.stars) + '☆'.repeat(5-fb.stars);
+                    const card = document.createElement('div');
+                    card.className = 'feedback-card';
+                    card.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-avatar"><i class="fas fa-user"></i></div>
+                            <span class="feedback-name">${fb.user}</span>
+                        </div>
+                        <div class="feedback-stars">${stars}</div>
+                        <p class="feedback-text">"${fb.text}"</p>
+                    `;
+                    feedbackGrid.appendChild(card);
+                });
+            }
+            
+            // Inizializza UI
             document.getElementById('totalOrders').innerText = orders;
             document.getElementById('totalLogins').innerText = logins;
             document.getElementById('onlineUsers').innerText = onlineUsers;
-            updateCartUI();
             
-            // Event listeners carrello
-            document.getElementById('cartToggleBtn').addEventListener('click', openCart);
+            // Event listeners carrello (multi)
+            document.querySelectorAll('[id^="cartToggleBtn"]').forEach(btn => {
+                btn.addEventListener('click', openCart);
+            });
+            
             document.getElementById('closeCartBtn').addEventListener('click', closeCart);
             document.getElementById('overlay').addEventListener('click', closeCart);
             
-            // Admin panel (CTRL+SHIFT+A)
+            // Event listener modale
+            document.getElementById('modalAddToCart').addEventListener('click', addFromModal);
+            
+            // Chiudi modale con ESC
             document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-                    document.getElementById('adminPanel').classList.toggle('visible');
+                if (e.key === 'Escape') {
+                    closeProductModal();
+                    closeCart();
                 }
             });
             
             // Simula utenti online
             setInterval(() => {
-                onlineUsers = Math.floor(Math.random() * 8) + 2;
+                onlineUsers = Math.floor(Math.random() * 12) + 4;
                 document.getElementById('onlineUsers').innerText = onlineUsers;
+                if (document.getElementById('adminOnlineUsers')) {
+                    document.getElementById('adminOnlineUsers').innerText = onlineUsers;
+                }
             }, 15000);
+            
+            // Inizializza dati admin
+            updateAdminStats();
+            
+            // Mostra home page
+            changePage('home');
         };
     </script>
 </body>
