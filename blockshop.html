@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockShop · Prodotti digitali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0a0710;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* ===== SFONDO SOTTILE ===== */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 30% 40%, rgba(75, 30, 90, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(55, 25, 70, 0.15) 0%, transparent 45%),
+                        radial-gradient(circle at 10% 80%, rgba(85, 40, 100, 0.1) 0%, transparent 50%);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 72% 48%, rgba(255,255,255,0.015) 1px, transparent 1px),
+                radial-gradient(circle at 33% 67%, rgba(255,255,255,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 91% 12%, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 350px 350px;
+            animation: float 60s infinite linear;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 15% 25%, 20% 35%, 8% 45%, 25% 15%; }
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #b794f4;
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #8b5aa6;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-login:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== TITOLI ===== */
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== GRIGLIA PRODOTTI ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 4rem;
+        }
+
+        .product-card {
+            background: rgba(18, 12, 22, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            transition: all 0.25s;
+        }
+
+        .product-card:hover {
+            background: rgba(28, 18, 34, 0.7);
+            border-color: rgba(180, 130, 220, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .product-icon {
+            color: #c8a7e0;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: white;
+        }
+
+        .product-desc {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e2d1f0;
+        }
+
+        .btn-add {
+            background: transparent;
+            border: 1px solid rgba(200, 167, 224, 0.4);
+            color: #e2d1f0;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add:hover {
+            background: rgba(200, 167, 224, 0.1);
+            border-color: #c5a2e0;
+            color: white;
+        }
+
+        /* ===== CARRELLO LATERALE ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            background: #0f0b16;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: right 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .cart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .close-cart {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-cart:hover {
+            color: white;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+
+        .cart-item-price {
+            color: #c5a2e0;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-remove {
+            color: rgba(255, 255, 255, 0.4);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .cart-item-remove:hover {
+            color: #ff8a8a;
+        }
+
+        .cart-footer {
+            padding: 1.8rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cart-total-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cart-total-value {
+            font-weight: 700;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: #6d3f82;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .btn-checkout:hover {
+            background: #7e4c94;
+        }
+
+        .cart-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: rgba(255, 255, 255, 0.4);
+            gap: 1rem;
+        }
+
+        .cart-empty i {
+            font-size: 3rem;
+        }
+
+        /* ===== OVERLAY ===== */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        /* ===== PAGINA LOGIN/REGISTER ===== */
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .auth-card {
+            background: #130e1a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 480px;
+            backdrop-filter: blur(16px);
+        }
+
+        .auth-logo {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .auth-logo span {
+            color: #b794f4;
+        }
+
+        .auth-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .auth-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #b794f4;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .auth-btn {
+            padding: 1rem;
+            background: #6d3f82;
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+
+        .auth-btn:hover {
+            background: #7e4c94;
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .auth-link {
+            color: #c5a2e0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FEEDBACK ===== */
+        .feedback-section {
+            margin: 5rem 0;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .feedback-card {
+            background: rgba(18, 12, 22, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 1.8rem;
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(200, 167, 224, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c8a7e0;
+        }
+
+        .feedback-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .feedback-stars {
+            color: #c8a7e0;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .feedback-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: normal;
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        .admin-panel {
+            background: rgba(12, 8, 16, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin: 3rem 0 5rem;
+            display: none;
+        }
+
+        .admin-panel.visible {
+            display: block;
+        }
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-icon {
+            color: #c5a2e0;
+            font-size: 1.8rem;
+        }
+
+        .admin-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .stat-sub {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(200, 167, 224, 0.5);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: rgba(200, 167, 224, 0.12);
+            border-color: #c5a2e0;
+            color: white;
+        }
+
+        .revenue-display {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #e2d1f0;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 6rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- SFONDO -->
+    <div class="background"></div>
+    <div class="particles"></div>
+
+    <!-- OVERLAY CARRELLO -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- CARRELLO LATERALE -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-title">
+                <i class="fas fa-shopping-bag" style="color: #c5a2e0;"></i>
+                Il tuo carrello
+            </div>
+            <button id="closeCartBtn" class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cartItemsContainer" class="cart-items">
+            <!-- I prodotti verranno inseriti qui dinamicamente -->
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Il carrello è vuoto</p>
+            </div>
+        </div>
+        <div id="cartFooter" class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Totale</span>
+                <span class="cart-total-value" id="cartTotal">€0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fas fa-bolt"></i>
+                Procedi al pagamento
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENUTO PRINCIPALE (HOME) -->
+    <div id="homePage">
+        <div class="container">
+            <!-- HEADER -->
+            <header>
+                <a href="#" class="logo">BLOCK<span>SHOP</span></a>
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#prodotti">Prodotti</a>
+                    <a href="#feedback">Recensioni</a>
+                    <div class="nav-actions">
+                        <a href="login.html" class="btn-login" onclick="goToLogin(event)">Accedi</a>
+                        <button id="cartToggleBtn" class="cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- HERO -->
+            <div>
+                <h1 class="page-title">Prodotti digitali</h1>
+                <p class="page-subtitle">Download immediato · Licenze originali</p>
+            </div>
+
+            <!-- PRODOTTI -->
+            <div id="prodotti">
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+
+            <!-- FEEDBACK -->
+            <div class="feedback-section" id="feedback">
+                <h2 style="font-size: 1.6rem; font-weight: 500; color: white;">Recensioni dei clienti</h2>
+                <div class="feedback-grid" id="feedbackGrid"></div>
+            </div>
+
+            <!-- ADMIN PANEL (CTRL+SHIFT+A) -->
+            <div id="adminPanel" class="admin-panel">
+                <div class="admin-header">
+                    <div class="admin-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="admin-title">Amministrazione</div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-label">Fatturato totale</div>
+                        <div class="stat-value" id="totalRevenue">€0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Utenti online</div>
+                        <div class="stat-value" id="onlineUsers">3</div>
+                        <div class="stat-sub">ora</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Accessi</div>
+                        <div class="stat-value" id="totalLogins">127</div>
+                        <div class="stat-sub">totali</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Ordini</div>
+                        <div class="stat-value" id="totalOrders">42</div>
+                        <div class="stat-sub">completati</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.95rem;">Filtra fatturato</div>
+                    <div class="filter-group">
+                        <button class="filter-btn active" onclick="filterRevenue('today')">Oggi</button>
+                        <button class="filter-btn" onclick="filterRevenue('week')">Settimana</button>
+                        <button class="filter-btn" onclick="filterRevenue('month')">Mese</button>
+                        <button class="filter-btn" onclick="filterRevenue('year')">Anno</button>
+                        <button class="filter-btn" onclick="filterRevenue('all')">Tutto</button>
+                    </div>
+                    <div class="revenue-display" id="filteredRevenue">€1.247,00</div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer>
+                <p>© 2025 BlockShop · Tutti i diritti riservati</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- PAGINA LOGIN (NASCOSTA DI DEFAULT) -->
+    <div id="loginPage" class="auth-page hidden">
+        <div class="auth-card">
+            <a href="#" class="auth-logo" onclick="goToHome(event)">BLOCK<span>SHOP</span></a>
+            <h2 class="auth-title">Benvenuto</h2>
+            <p class="auth-subtitle">Accedi al tuo account</p>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="la tua@email.com" id="loginEmail">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="••••••••" id="loginPassword">
+                </div>
+                <button class="auth-btn" onclick="loginUser()">Accedi</button>
+            </div>
+            
+            <div class="auth-footer">
+                Non hai un account? <a href="#" class="auth-link" onclick="goToRegister(event)">Registrati</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGINA REGISTER (NASCOSTA DI DEFAULT) -->
+    <div id="registerPage" class="auth-page hidden">
+        <div class="auth-card">
+            <a href="#" class="auth-logo" onclick="goToHome(event)">BLOCK<span>SHOP</span></a>
+            <h2 class="auth-title">Crea account</h2>
+            <p class="auth-subtitle">Inizia a fare acquisti</p>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Nome utente</label>
+                    <input type="text" class="form-input" placeholder="username" id="registerName">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="la tua@email.com" id="registerEmail">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="almeno 8 caratteri" id="registerPassword">
+                </div>
+                <button class="auth-btn" onclick="registerUser()">Registrati</button>
+            </div>
+            
+            <div class="auth-footer">
+                Hai già un account? <a href="#" class="auth-link" onclick="goToLogin(event)">Accedi</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // BLOCKSHOP - VERSIONE PROFESSIONALE
+        // CARRELLO LATERALE · PAGINE DEDICATE LOGIN/REGISTER
+        // ============================================
+
+        // ---------- PRODOTTI ----------
+        const products = [
+            { id: 1, name: "Ebook - Trading Mastery", desc: "Strategie avanzate di trading", price: 29.99, icon: "fa-book" },
+            { id: 2, name: "Corso Video - Editing Pro", desc: "Impara DaVinci Resolve in 10 ore", price: 49.99, icon: "fa-video" },
+            { id: 3, name: "Template Web Premium", desc: "30 template HTML5 responsivi", price: 39.99, icon: "fa-code" },
+            { id: 4, name: "Plugin SEO WordPress", desc: "Ottimizzazione automatica", price: 24.99, icon: "fa-magnifying-glass" },
+            { id: 5, name: "Corso Crypto Base", desc: "Guida completa a Bitcoin e altcoin", price: 34.99, icon: "fa-coins" },
+            { id: 6, name: "Font Pack", desc: "200 font premium commerciali", price: 19.99, icon: "fa-font" },
+            { id: 7, name: "Mockup 3D", desc: "50 mockup fotorealistici", price: 27.99, icon: "fa-cube" },
+            { id: 8, name: "Ebook - Produttività", desc: "Metodo GTD per creativi", price: 14.99, icon: "fa-clock" },
+            { id: 9, name: "Preset Lightroom", desc: "100 preset cinematici", price: 17.99, icon: "fa-camera" },
+            { id: 10, name: "Corso Python Base", desc: "Programmazione da zero", price: 44.99, icon: "fa-terminal" },
+            { id: 11, name: "Pack Icone", desc: "500 icone SVG", price: 15.99, icon: "fa-icons" },
+            { id: 12, name: "Ebook - Marketing", desc: "Strategie social media", price: 22.99, icon: "fa-chart-line" },
+            { id: 13, name: "Sound Effects", desc: "100 effetti audio", price: 12.99, icon: "fa-music" },
+            { id: 14, name: "Corso Excel Avanzato", desc: "Pivot, macro e VBA", price: 37.99, icon: "fa-table" },
+            { id: 15, name: "3D Models", desc: "10 modelli per blender", price: 21.99, icon: "fa-cubes" },
+            { id: 16, name: "Ebook - Mindset", desc: "Psicologia del successo", price: 16.99, icon: "fa-brain" },
+            { id: 17, name: "After Effects Pack", desc: "50 template motion", price: 45.99, icon: "fa-film" },
+            { id: 18, name: "Corso Shopify", desc: "Dropshipping da zero", price: 54.99, icon: "fa-store" },
+            { id: 19, name: "Pattern Pack", desc: "100 pattern seamless", price: 13.99, icon: "fa-border-all" },
+            { id: 20, name: "Bundle Creator", desc: "Tutti i prodotti scontati", price: 199.99, icon: "fa-gem" }
+        ];
+
+        // ---------- STATO ----------
+        let cart = [];
+        let isLoggedIn = false;
+        let currentUser = null;
+
+        // ---------- DATI STATISTICHE ----------
+        let revenueData = {
+            today: 1247,
+            week: 4580,
+            month: 18900,
+            year: 127450,
+            all: 247890
+        };
+        let orders = 42;
+        let logins = 127;
+        let onlineUsers = 3;
+
+        // ========== FUNZIONI PAGINE ==========
+        function goToLogin(e) {
+            e.preventDefault();
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('registerPage').classList.add('hidden');
+        }
+
+        function goToRegister(e) {
+            e.preventDefault();
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('registerPage').classList.remove('hidden');
+        }
+
+        function goToHome(e) {
+            e.preventDefault();
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('registerPage').classList.add('hidden');
+        }
+
+        // ========== AUTENTICAZIONE ==========
+        function loginUser() {
+            const email = document.getElementById('loginEmail').value;
+            if (email) {
+                isLoggedIn = true;
+                currentUser = email;
+                logins++;
+                document.getElementById('totalLogins').innerText = logins;
+                alert(`Benvenuto ${email}`);
+                goToHome(new Event('click'));
+                
+                // Aggiorna bottone login
+                const loginBtn = document.querySelector('.btn-login');
+                if (loginBtn) {
+                    loginBtn.innerHTML = '<i class="fas fa-user"></i> Profilo';
+                }
+            } else {
+                alert('Inserisci email e password');
+            }
+        }
+
+        function registerUser() {
+            const name = document.getElementById('registerName').value;
+            if (name) {
+                isLoggedIn = true;
+                currentUser = name;
+                logins++;
+                document.getElementById('totalLogins').innerText = logins;
+                alert(`Registrazione completata! Benvenuto ${name}`);
+                goToHome(new Event('click'));
+                
+                const loginBtn = document.querySelector('.btn-login');
+                if (loginBtn) {
+                    loginBtn.innerHTML = '<i class="fas fa-user"></i> Profilo';
+                }
+            } else {
+                alert('Compila tutti i campi');
+            }
+        }
+
+        // ========== CARRELLO ==========
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    icon: product.icon
+                });
+            }
+            
+            updateCartUI();
+            openCart();
+            
+            // Feedback visivo
+            const btn = event.target;
+            btn.innerHTML = '<i class="fas fa-check"></i> Aggiunto';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-cart-plus"></i> Aggiungi';
+            }, 1500);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Aggiorna contatore
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').innerText = totalItems;
+            
+            // Aggiorna carrello laterale
+            const container = document.getElementById('cartItemsContainer');
+            const footer = document.getElementById('cartFooter');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Il carrello è vuoto</p>
+                    </div>
+                `;
+                footer.style.display = 'block';
+            } else {
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+                footer.style.display = 'block';
+            }
+            
+            // Aggiorna totale
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').innerText = `€${total.toFixed(2)}`;
+        }
+
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Il carrello è vuoto');
+                return;
+            }
+            
+            if (!isLoggedIn) {
+                alert('Devi effettuare il login per procedere');
+                goToLogin(new Event('click'));
+                closeCart();
+                return;
+            }
+            
+            // Calcola totale
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Simula pagamento PayPal
+            alert(`Reindirizzamento a PayPal...\nTotale: €${total.toFixed(2)}`);
+            
+            setTimeout(() => {
+                alert('✅ Pagamento completato! Riceverai i download via email.');
+                
+                // Aggiorna statistiche
+                orders++;
+                document.getElementById('totalOrders').innerText = orders;
+                
+                cart.forEach(item => {
+                    revenueData.today += item.price;
+                    revenueData.week += item.price;
+                    revenueData.month += item.price;
+                    revenueData.year += item.price;
+                    revenueData.all += item.price;
+                });
+                
+                updateRevenueDisplay();
+                
+                // Svuota carrello
+                cart = [];
+                updateCartUI();
+                closeCart();
+            }, 2000);
+        }
+
+        // ========== PRODOTTI ==========
+        function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-icon"><i class="fas ${product.icon}"></i></div>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-desc">${product.desc}</p>
+                    <div class="product-footer">
+                        <span class="product-price">€${product.price.toFixed(2)}</span>
+                        <button class="btn-add" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i> Aggiungi
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ========== FEEDBACK ==========
+        const feedbacks = [
+            { user: "Marco R.", text: "Ebook fantastico, ben scritto e pieno di esempi pratici.", stars: 5 },
+            { user: "Sofia L.", text: "Corso video chiarissimo. Ho imparato più qui che in 3 mesi di prove.", stars: 5 },
+            { user: "Alessandro T.", text: "Plugin SEO perfetto, il mio sito è volato in prima pagina.", stars: 4 },
+            { user: "Giulia M.", text: "Consegna immediata, assistenza rapida.", stars: 5 },
+            { user: "Davide P.", text: "Pack di mockup di altissima qualità.", stars: 5 },
+            { user: "Chiara F.", text: "Prezzi onesti e prodotti originali.", stars: 4 }
+        ];
+
+        function loadFeedbacks() {
+            const grid = document.getElementById('feedbackGrid');
+            grid.innerHTML = '';
+            
+            feedbacks.forEach(fb => {
+                const stars = '★'.repeat(fb.stars) + '☆'.repeat(5-fb.stars);
+                const card = document.createElement('div');
+                card.className = 'feedback-card';
+                card.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-avatar"><i class="fas fa-user"></i></div>
+                        <span class="feedback-name">${fb.user}</span>
+                    </div>
+                    <div class="feedback-stars">${stars}</div>
+                    <p class="feedback-text">"${fb.text}"</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ========== ADMIN ==========
+        function updateRevenueDisplay() {
+            document.getElementById('totalRevenue').innerText = `€${revenueData.all.toFixed(2)}`;
+            document.getElementById('filteredRevenue').innerText = `€${revenueData.today.toFixed(2)}`;
+        }
+
+        function filterRevenue(period) {
+            // Aggiorna filtri
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Mostra fatturato filtrato
+            document.getElementById('filteredRevenue').innerText = `€${revenueData[period].toFixed(2)}`;
+        }
+
+        // ========== INIZIALIZZAZIONE ==========
+        window.onload = function() {
+            loadProducts();
+            loadFeedbacks();
+            updateRevenueDisplay();
+            document.getElementById('totalOrders').innerText = orders;
+            document.getElementById('totalLogins').innerText = logins;
+            document.getElementById('onlineUsers').innerText = onlineUsers;
+            updateCartUI();
+            
+            // Event listeners carrello
+            document.getElementById('cartToggleBtn').addEventListener('click', openCart);
+            document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+            document.getElementById('overlay').addEventListener('click', closeCart);
+            
+            // Admin panel (CTRL+SHIFT+A)
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                    document.getElementById('adminPanel').classList.toggle('visible');
+                }
+            });
+            
+            // Simula utenti online
+            setInterval(() => {
+                onlineUsers = Math.floor(Math.random() * 8) + 2;
+                document.getElementById('onlineUsers').innerText = onlineUsers;
+            }, 15000);
+        };
+    </script>
+</body>
+</html>
